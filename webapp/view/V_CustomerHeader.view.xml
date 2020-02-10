@@ -1,0 +1,14 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="northwindSAPUI5_RoutingandNavigation.controller.V_CustomerHeader">
+	<App>
+		<pages>
+			<Page title="Customer Overview">
+				<content>
+				    <List noDataText="Drop list items here" id="__list1" items="{/Customers}">
+				        <items>
+				            <StandardListItem type="Navigation" title="{ContactName}" id="__item3" press="GoToInvDetail" icon="sap-icon://account"/></items>
+				    </List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

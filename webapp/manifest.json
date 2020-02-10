@@ -1,0 +1,130 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"id": "northwindSAPUI5_RoutingandNavigation",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"Northwind.svc": {
+				"uri": "/northwind/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"_version": "1.3.0"
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_hcb", "sap_belize"],
+		"_version": "1.3.0"
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "northwindSAPUI5_RoutingandNavigation.view.V_Root",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "northwindSAPUI5_RoutingandNavigation.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "Northwind.svc",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewPath": "northwindSAPUI5_RoutingandNavigation.view",
+				"controlId": "RootID",
+				"controlAggregation": "pages",
+				"viewLevel": null
+			},
+			"targets": {
+				"TargetCusHeader": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "V_CustomerHeader",
+					"viewLevel": 1
+				},
+				"TargetCusDetail": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "V_CustomerDetail",
+					"viewLevel": 2
+				}
+			},
+			"routes": [{
+				"name": "RouteCusHeader",
+				"pattern": "",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["TargetCusHeader"]
+			}, {
+				"name": "RouteCusDetail",
+				"pattern": "Customers{SelectedItem}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["TargetCusDetail"]
+			}]
+		},
+		"_version": "1.2.0"
+	}
+}
